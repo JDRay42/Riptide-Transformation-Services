@@ -3,7 +3,6 @@ anyio==3.7.1
 certifi==2023.7.22
 charset-normalizer==3.2.0
 click==8.1.7
-decouple==0.0.7
 fastapi==0.103.1
 filelock==3.12.4
 fsspec==2023.9.1
@@ -23,6 +22,7 @@ packaging==23.1
 Pillow==10.0.1
 pydantic==2.3.0
 pydantic_core==2.6.3
+python-decouple==3.8
 PyYAML==6.0.1
 regex==2023.8.8
 requests==2.31.0
