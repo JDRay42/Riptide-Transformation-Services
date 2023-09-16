@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Paraphraser</h1>
+<div class="center-div">
+    <form action="/paraphraser/" method="post">
+        <textarea name="text" placeholder="Enter your text here"></textarea>
+        <button type="submit">Paraphrase</button>
+        <div class="input-group">
+            <input type="checkbox" id="multipleResponses" name="multipleResponses" onclick="toggleDropdown()">
+            <label for="multipleResponses">Multiple Responses</label>
+        </div>
+
+        <div class="input-group" id="responseCount" style="display:none;">
+            <label for="numResponses">Number of Responses:</label>
+            <select name="numResponses" id="numResponses">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+    </form>
+</div>
+
+<div id="paraphrasedResults">
+    {% if entered_text %}
+    <h3>Original Text:</h3>
+    <p>{{ entered_text }}</p>
+    <h3>Paraphrased Text(s):</h3>
+    {% for paraphrase in paraphrases %}
+    <p>{{ paraphrase }}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+
+<script>
+    function toggleDropdown() {
+        var checkBox = document.getElementById("multipleResponses");
+        var dropdown = document.getElementById("responseCount");
+        var form = document.querySelector('form');
+        if (checkBox.checked) {
+            dropdown.style.display = "block";
+        } else {
+            dropdown.style.display = "none";
+        }
+    }
+</script>
+
+{% endblock %}

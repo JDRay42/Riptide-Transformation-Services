@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>NER Tagging</h1>
+<div class="center-div">
+    <form action="/nertags/" method="post">
+        <textarea name="text" placeholder="Enter your text here"></textarea>
+        <button type="submit">Get Tags</button>
+    </form>
+</div>
+<div class="center-div">
+    {% if entered_text %}
+    <div class="entered-text">
+        <h3>Original Text:</h3>
+        <p>{{ entered_text }}</p>
+    </div>
+    {% for tag in tags %}
+    <div class="ner-tag-line">
+        <span class="ner-tag-label">Word:</span> {{ tag['word'] }} -
+        <span class="ner-tag-label">Score:</span> {{ tag['score'] }} -
+        <span class="ner-tag-label">Entity:</span> {{ tag['entity'] }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+{% endblock %}

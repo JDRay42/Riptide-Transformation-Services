@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Riptide Transformation Services</title>
+</head>
+
+<body>
+    <div class="tabs">
+        <!-- Navigation tabs -->
+        <div class="tab"><a href="/nertags/">NER Tagging</a></div>
+        <div class="tab"><a href="/vectors/">Text to Vector</a></div>
+        <div class="tab"><a href="/paraphraser/">Paraphrase</a></div>
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+
+</html>
