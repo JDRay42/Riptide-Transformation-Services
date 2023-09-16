@@ -8,25 +8,6 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${PORT}:${PORT}"
+      - "PORT:${PORT}"
     volumes:
       - .:/app
-    environment:
-      - ENVIRONMENT=${ENVIRONMENT}
-      - API_VERSION=${API_VERSION}
-      - DEV_API_KEY=${DEV_API_KEY}
-      - PROD_API_KEY=${PROD_API_KEY}
-      - SCHEME=${SCHEME}
-      - HOST=${HOST}
-      - PORT=${PORT}
-      - SSL_CERT_PATH=${SSL_CERT_PATH}
-      - SSL_KEY_PATH=${SSL_KEY_PATH}
-      - PARAPHRASE_TEMPERATURE=${PARAPHRASE_TEMPERATURE}
-      - PARAPHRASE_MODEL_SIZE=${PARAPHRASE_MODEL_SIZE}
-      - PARAPHRASE_TOP_P=${PARAPHRASE_TOP_P}
-      - PARAPHRASE_TOP_K=${PARAPHRASE_TOP_K}
-      - PARAPHRASE_REPETITION_PENALTY=${PARAPHRASE_REPETITION_PENALTY}
-      - NER_TOKENIZER=${NER_TOKENIZER}
-      - NER_MODEL=${NER_MODEL}
-      - TEXT2VEC_MODEL=${TEXT2VEC_MODEL}
-      - WORD_LIMIT=${WORD_LIMIT}
