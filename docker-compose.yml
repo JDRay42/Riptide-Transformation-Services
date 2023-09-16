@@ -11,4 +11,7 @@ services:
       - "${PORT}:${PORT}"
     volumes:
       - .:/app
+      - /etc/ssl/certs/dev-certificate.pem:/etc/ssl/certs/dev-certificate.pem
+      - /etc/ssl/certs/dev-private-key.pem:/etc/ssl/certs/dev-private-key.pem
+
 
