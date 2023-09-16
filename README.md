@@ -55,17 +55,17 @@ The app runs over https, which requires SSL.  You'll need to generate a private 
 
 To generate a private key (`key.pem`), run the following command:
 
-\```bash
+```bash
 openssl genpkey -algorithm RSA -out key.pem
-\```
+```
 
 ### 2. Create a Self-Signed Certificate
 
 After you've generated a private key, create a self-signed certificate (`cert.pem`) using the command below:
 
-\```bash
+```bash
 openssl req -new -x509 -key key.pem -out cert.pem -days 365
-\```
+```
 
 This command will prompt you for additional information such as your country, state, etc. Fill them out as needed.
 
@@ -73,10 +73,10 @@ This command will prompt you for additional information such as your country, st
 
 Once you have both `key.pem` and `cert.pem`, ensure they're in a secure location and update the app's `.env` file to use them for SSL:
 
-\```plaintext
+```plaintext
 SSL_CERT_PATH=/path/to/your/cert.pem
 SSL_KEY_PATH=/path/to/your/key.pem
-\```
+```
 
 ### Note
 
@@ -137,7 +137,7 @@ SSL_KEY_PATH=/path/to/your/key.pem
    Otherwise, based on your configuration, open `https://{$HOST}:{$PORT}`
 
    **Note:** The default word limit is 400 words of text entry.  This enables a certain degree of decent performance while respecting BERT's 512-token limit.  In places where BERT divides certain words into multiple tokens, 400 seemed like a good line to draw in the sand.  If you want faster performance, lower the value in the `.env` file and restart the server.  If you want larger context capability (more than 512 tokens), change the model using the settings in the section at the bottom of the `.env`.
-   
+
 # Contributing to Riptide Transformation Services
 
 First and foremost, thank you for considering contributing to Riptide Transformation Services! We value all contributions, whether you're fixing a typo, suggesting improvements, or proposing a new feature.
