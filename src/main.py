@@ -1,3 +1,33 @@
+"""
+main.py
+=======
+
+This module initializes and configures the FastAPI application, setting up essential configurations, routing, and middleware.
+
+Imports:
+    - Various modules for application setup and utility.
+    - FastAPI components for routing, request handling, and templating.
+    - Environment variable management using 'decouple'.
+    - Routes from service modules like `ner_service`, `text2vec_service`, and `paraphraser_service`.
+
+Configuration:
+    - SCHEME: Protocol used (default is 'https').
+    - HOST: Application host (default is 'localhost').
+    - PORT: Port where the application runs (default is 8019).
+    - ENV: Specifies the current environment ('development' or 'production').
+    - API_KEY: The API key, which is fetched based on the environment.
+
+FastAPI Setup:
+    - An instance of the FastAPI application is created.
+    - Jinja2 templating is set up for rendering HTML templates.
+
+Services:
+    - The application uses various services, each with its own set of routes:
+        * ner_service: Handles Named Entity Recognition tasks.
+        * text2vec_service: Converts text to vectors.
+        * paraphraser_service: Provides paraphrasing functionalities.
+"""
+
 import os
 import json
 import httpx

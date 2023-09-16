@@ -1,3 +1,26 @@
+"""
+ner_service.py
+==============
+
+This module provides functionalities related to Named Entity Recognition (NER) using transformer models.
+
+Imports:
+    - Essential modules for string manipulation, routing, response formatting, and configuration management.
+    - Components from the `transformers` library for tokenization, model loading, and NER pipelines.
+
+Configuration:
+    - NER_TOKENIZER: Tokenizer configuration for the NER model (default is "dbmdz/bert-large-cased-finetuned-conll03-english").
+    - NER_MODEL: Model configuration for NER (default is "dbmdz/bert-large-cased-finetuned-conll03-english").
+    - WORD_LIMIT: Limit for the number of words in the NER input (default is 400).
+
+Functions:
+    - `merge_capitalized_sequences`: Merges sequences of capitalized words in the text. Useful for handling entities that span multiple tokens.
+
+API Endpoints:
+    (Further details about the API endpoints provided by this service module should be documented here.)
+
+"""
+
 import re
 from fastapi import APIRouter, Depends
 from fastapi.responses import JSONResponse

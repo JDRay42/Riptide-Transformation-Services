@@ -1,3 +1,30 @@
+"""
+paraphraser_service.py
+======================
+
+This module provides functionalities related to paraphrasing text using transformer models.
+
+Imports:
+    - Essential modules for system interaction, API routing, request-response modeling, and transformer-based text processing.
+
+Configuration:
+    - Paraphrasing model behavior configurations like temperature, top_k, top_p, repetition penalty, and model size.
+    - WORD_LIMIT: Specifies the limit for the number of words in the paraphrasing input (default is 400).
+
+Router:
+    - An instance of the FastAPI APIRouter is created to manage routes specific to this service.
+
+Models:
+    - ParaphraseRequest: Represents the structure of an input request for paraphrasing.
+    - ParaphraseResponse: Represents the structure of the output after paraphrasing.
+    - ParaphraseMultipleRequest: Used for requests where multiple paraphrase outputs are desired.
+
+API Endpoints:
+    - POST `/`: Takes a `ParaphraseRequest` and returns a `ParaphraseResponse` with the paraphrased text.
+    (Further details about other API endpoints provided by this service module should be documented here.)
+
+"""
+
 import os
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse

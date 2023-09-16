@@ -1,7 +1,33 @@
-'''
-This transformation service is designed to align with the Weaviate configuration for Riptide Vectorizer.
-If using Vectorizer and that configuration changes, this service will need to be updated accordingly.
-'''
+"""
+text2vec_service.py
+===================
+
+This service module offers functionalities to convert text into vectors using transformer models. 
+It is designed to align with the Weaviate configuration for the Riptide Vectorizer. 
+If using Riptide Vectorizer, any changes in the Vectorizer configuration necessitate updates to this service.
+
+Imports:
+    - Essential modules for API routing, request-response modeling, text vectorization, and configuration management.
+
+Configuration:
+    - TEXT2VEC_MODEL: Specifies the transformer model used for text-to-vector conversion.
+    - WORD_LIMIT: Specifies the limit for the number of words in the vectorization input (default is 400).
+
+Model Loading:
+    - The Sentence Transformer model, as specified in the `TEXT2VEC_MODEL` configuration, is loaded.
+
+Router:
+    - An instance of the FastAPI APIRouter is created to manage routes specific to this service.
+
+Models:
+    - TextVectorRequest: Represents the structure of an input request for vectorization.
+    - TextVectorResponse: Represents the structure of the output vector.
+
+API Endpoints:
+    - POST `/`: Converts the provided text in the `TextVectorRequest` to a vector and returns it as a `TextVectorResponse`.
+
+"""
+
 
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
