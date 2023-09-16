@@ -45,13 +45,45 @@ If you're interested in contributing to the Riptide Transformation Services, ple
 
 This project is licensed under the `BSD 3-Clause License`. See the `LICENSE` file for details.
 
-# Contributing to Riptide Transformation Services
+# Getting Started
 
-First and foremost, thank you for considering contributing to Riptide Transformation Services! We value all contributions, whether you're fixing a typo, suggesting improvements, or proposing a new feature.
+## Generating SSL Keys
 
-## 1. Getting Started
+The app runs over https, which requires SSL.  You'll need to generate a private key and a self-signed certificate. Follow the steps below to create these SSL keys:
 
-### Setting Up Your Environment (Python)
+### 1. Generate a Private Key
+
+To generate a private key (`key.pem`), run the following command:
+
+\```bash
+openssl genpkey -algorithm RSA -out key.pem
+\```
+
+### 2. Create a Self-Signed Certificate
+
+After you've generated a private key, create a self-signed certificate (`cert.pem`) using the command below:
+
+\```bash
+openssl req -new -x509 -key key.pem -out cert.pem -days 365
+\```
+
+This command will prompt you for additional information such as your country, state, etc. Fill them out as needed.
+
+### 3. Using the SSL Keys with the App
+
+Once you have both `key.pem` and `cert.pem`, ensure they're in a secure location and update the app's `.env` file to use them for SSL:
+
+\```plaintext
+SSL_CERT_PATH=/path/to/your/cert.pem
+SSL_KEY_PATH=/path/to/your/key.pem
+\```
+
+### Note
+
+- This guide creates a self-signed certificate which is great for development and testing. For production environments, consider obtaining a certificate from a trusted certificate authority (CA).
+- Self-signed certificates can cause browser warnings because they're not issued by a trusted CA. Ensure you understand these implications before deploying in a user-facing environment.
+
+## Setting Up Your Environment (Python)
 
 1. Fork the repository on GitHub.
 2. Clone your fork to your local machine: 
@@ -63,15 +95,20 @@ First and foremost, thank you for considering contributing to Riptide Transforma
    python -m venv venv
    source venv/bin/activate
    ```
-4. Install the required packages: 
+4. **Set Up Environment Variables**:
+    - Copy the `example.env` to `.env`:
+        ```bash
+        cp example.env .env
+        ```
+    - Edit the `.env` file to suit your needs using your favorite text editor. Ensure you set all necessary variables.
+    - Be sure to update the paths to the SSL certificates.
+    
+5. Install the required packages: 
    ```
    pip install -r requirements.txt
    ./launch.sh
    ```
-
-### Setting Up Your Environment (Docker)
-
-## Setup Instructions
+## Setting Up Your Environment (Docker)
 
 1. **Clone the Repository**:
     ```bash
@@ -85,14 +122,27 @@ First and foremost, thank you for considering contributing to Riptide Transforma
         cp example.env .env
         ```
     - Edit the `.env` file to suit your needs using your favorite text editor. Ensure you set all necessary variables.
-
+    - Be sure to update the paths to the SSL certificates.
+    
 3. **Run with Docker Compose**:
     Ensure Docker and Docker Compose are installed. Then, initiate the services with:
     ```bash
     docker-compose up --build
     ```
 
-## 2. Making Changes
+## Usage
+   If you just used the default .env file by copying its contents from example.env, then all you'll need to do is open a web browser and to to:
+   `https://localhost:8019`
+
+   Otherwise, based on your configuration, open `https://{$HOST}:{$PORT}`
+
+   **Note:** The default word limit is 400 words of text entry.  This enables a certain degree of decent performance while respecting BERT's 512-token limit.  In places where BERT divides certain words into multiple tokens, 400 seemed like a good line to draw in the sand.  If you want faster performance, lower the value in the `.env` file and restart the server.  If you want larger context capability (more than 512 tokens), change the model using the settings in the section at the bottom of the `.env`.
+   
+# Contributing to Riptide Transformation Services
+
+First and foremost, thank you for considering contributing to Riptide Transformation Services! We value all contributions, whether you're fixing a typo, suggesting improvements, or proposing a new feature.
+
+## Making Changes
 
 1. Create a new branch for your feature or bugfix: 
    ```
@@ -107,20 +157,20 @@ First and foremost, thank you for considering contributing to Riptide Transforma
    ```
 6. Push your changes to your fork on GitHub.
 
-## 3. Submitting a Pull Request
+## Submitting a Pull Request
 
 1. Go to the [Riptide Transformation Services repository](https://github.com/JDRay42/Riptide-Transformation-Services) on GitHub.
 2. Click the "New Pull Request" button.
 3. Select your fork and the branch you created.
 4. Submit your pull request with a brief description of your changes.
 
-## 4. Code Review
+## Code Review
 
 1. Once your pull request is submitted, maintainers will review your code.
 2. Address any feedback or changes requested by the maintainers.
 3. Once approved, your changes will be merged into the main branch.
 
-## 5. Code of Conduct
+## Code of Conduct
 
 ### Purpose
 
