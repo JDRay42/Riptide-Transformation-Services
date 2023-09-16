@@ -66,6 +66,7 @@ First and foremost, thank you for considering contributing to Riptide Transforma
 4. Install the required packages: 
    ```
    pip install -r requirements.txt
+   ./launch.sh
    ```
 
 ### Setting Up Your Environment (Docker)
